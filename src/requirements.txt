@@ -1,0 +1,15 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+torch==2.6.0
+easyocr
+pdf2image
+pymupdf
+Pillow
+sentence-transformers
+faiss-cpu
+transformers
+accelerate
+bitsandbytes
+streamlit
+pandas
+numpy
