@@ -3,7 +3,13 @@
 
 **Tech-Math AI Agent** is an advanced Natural Language Processing (NLP) system designed as a specialized assistant for technical and mathematical environments. The project implements a hybrid architecture that combines **Retrieval-Augmented Generation (RAG)** for factual documentation queries and **Program-Aided Language (PAL)** for deterministic mathematical problem-solving.
 
-
+## Table of Contents
+* [1. Project Overview](#1-project-overview)
+* [2. Technical Architecture](#2-technical-architecture)
+* [3. Technical Specifications](#3-technical-specifications)
+* [4. Implementation Stack](#4-implementation-stack)
+* [5. Project Structure](#5-project-structure)
+* [6. Usage and Installation](#6-usage-and-installation)
 
 ## 1. Project Overview
 The primary objective of this project is to develop a local, privacy-preserving AI agent capable of handling complex technical tasks without reliance on third-party APIs. It addresses the inherent limitations of standard Large Language Models (LLMs)—specifically "hallucinations" in mathematical calculations—by offloading symbolic logic to a Python execution environment.
@@ -61,9 +67,31 @@ As defined in `common/config.py`, the system adheres to the following parameters
 * **Quantization**: BitsAndBytes (4-bit precision)
 * **Mathematical Environment**: Python (NumPy, Pandas)
 
-## 5. Usage and Installation
+## 5. Project Structure
 
-### 5.1. Environment Setup
+The repository is organized into modular components to ensure a clear separation between the intent detection logic, the execution environments, and the storage layers.
+
+```text
+├── assets/                 # Documentation images and UI screenshots
+├── src/
+│   ├── common/             # Global configurations and model parameters
+│   ├── core/               # Core AI Logic
+│   │   ├── embedder.py     # Vector embedding generation (E5-small)
+│   │   ├── engine.py       # Intent classification and decision orchestration
+│   │   ├── generator.py    # Mistral-7B inference and PAL code generation
+│   │   ├── search.py       # Semantic search logic for RAG
+│   │   └── vector_store.py # FAISS index management
+│   ├── data/               # Data loading and processing scripts
+│   ├── preprocessing/      # PDF parsing and text cleaning
+│   ├── utils/              # Helper functions (logging, LaTeX formatting)
+│   ├── app.py              # Main Streamlit UI and application entry point
+│   └── requirements.txt    # Project dependencies
+└── README.md               # Project documentation
+```
+
+## 6. Usage and Installation
+
+### 6.1. Environment Setup
 The project environment is managed via a comprehensive dependency list. To set up the environment, ensure you have **Python 3.10+** and (optionally) a **CUDA-capable GPU**, then run:
 
 
@@ -95,7 +123,7 @@ pip install -r requirements.txt
 
 ---
 
-### 5.2. Document Indexing and UI Usage
+### 6.2. Document Indexing and UI Usage
 
 The agent provides a unified **Streamlit User Interface** that handles data ingestion and interaction within a single workflow. No manual execution of indexing scripts is required.
 
@@ -134,7 +162,7 @@ Once indexing is complete, the agent is ready to:
 
 ---
 
-### 5.3. Configuration
+### 6.3. Configuration
 
 Hardware and runtime settings can be configured inside:
 
