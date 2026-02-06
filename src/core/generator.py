@@ -187,8 +187,16 @@ class LocalGenerator:
         ]
         if any(indicator in query_l for indicator in code_indicators):
             return Intents.CODE
+        
+        # Step 3: Heuristic check for general programming (CHAT) intent
+        chat_indicators = [
+            "bok", "kako si", "što misliš", "kako radiš", "pričaj mi nešto",
+            "vrijeme", "tko si ti", "što radiš", "kako si danas", "kako ide", "šta ima"
+        ]
+        if any(indicator in query_l for indicator in chat_indicators):
+            return Intents.CHAT
 
-        # Step 3: LLM-based classification for ambiguous queries
+        # Step 4: LLM-based classification for ambiguous queries
         intent_prompt = (
             f"{Tags.SENTENCE_START}{Tags.INST_START}\n"
             f"Analiziraj upit: '{query}'\n"

@@ -11,14 +11,18 @@ The primary objective of this project is to develop a local, privacy-preserving 
 ## 2. Technical Architecture
 The agent operates through a multi-stage pipeline:
 
+![Architecture](assets/architecture.jpg)
+
 ### 2.1. Intent Classification (Few-Shot Prompting)
 Rather than relying on simple keyword matching, the system utilizes **Few-Shot In-Context Learning**. By providing the model with curated examples of `MATH`, `CODE`, `DOCS`, and `CHAT` intents, the agent achieves high precision in routing queries to the appropriate specialized processing branch.
 
 ### 2.2. Documentation Retrieval (RAG)
 For the `DOCS` intent, the system employs:
 * **Vector Database**: FAISS (Facebook AI Similarity Search) for efficient similarity indexing.
-* **Semantic Search**: Utilizes multilingual embeddings to support technical queries in Croatian and English.
+* **Semantic Search**: Utilizes multilingual embeddings to support technical queries in Croatian.
 * **Contextual Injection**: Relevant document chunks are retrieved and injected into the system prompt to ensure responses are grounded in provided technical literature.
+
+![DOCS example](assets/docs_example.jpg)
 
 ### 2.3. Mathematical Execution (PAL)
 When a `MATH` intent is detected, the agent follows the **Program-Aided Language (PAL)** paradigm:
@@ -26,7 +30,7 @@ When a `MATH` intent is detected, the agent follows the **Program-Aided Language
 2.  Executes the code in an isolated environment.
 3.  Returns the calculated result, ensuring 100% numerical accuracy and avoiding common LLM arithmetic errors.
 
-![Architecture](assets/architecture.jpg)
+![MATH example](assets/math_example.jpg)
 
 ## 3. Technical Specifications
 
@@ -126,9 +130,9 @@ Once indexing is complete, the agent is ready to:
 - Solve mathematical problems using **PAL**
 - Handle general technical or conversational queries
 
----
-
 ![App](assets/app.jpg)
+
+---
 
 ### 5.3. Configuration
 
