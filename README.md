@@ -41,7 +41,7 @@ When a `MATH` intent is detected, the agent follows the **Program-Aided Language
 ## 3. Technical Specifications
 
 ### 3.1. Model Selection
-* **Generator Model**: `unsloth/mistral-7b-instruct-v0.3-bnb-4bit`
+* **Generator and Intent Classification Model**: `unsloth/mistral-7b-instruct-v0.3-bnb-4bit`
     * An optimized version of Mistral-7B, utilizing 4-bit quantization to fit within consumer-grade GPU memory (6GB VRAM) while maintaining high reasoning capabilities.
 * **Embedding Model**: `intfloat/multilingual-e5-small`
     * A high-efficiency multilingual model used to transform text into 384-dimensional vectors, ensuring high-quality document retrieval in the RAG pipeline.
